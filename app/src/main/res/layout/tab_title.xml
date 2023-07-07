@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/tab_background_selector"
+    android:gravity="center"
+    android:padding="16dp"
+    android:textSize="12sp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:paddingStart="12dp"
+    tools:text="Title"
+    android:textColor="@color/tab_text_selector" />
+

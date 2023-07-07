@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestTaskOnlineStore</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="price">price</string>
+    <string name="title_product">title</string>
+    <string name="exit">Exit</string>
+    <string name="details">details</string>
+</resources>
