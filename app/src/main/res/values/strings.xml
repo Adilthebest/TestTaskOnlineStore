@@ -6,5 +6,7 @@
     <string name="price">price</string>
     <string name="title_product">title</string>
     <string name="exit">Exit</string>
-    <string name="details">details</string>
+    <string name="details">Details</string>
+    <string name="category">Category</string>
+    <string name="rating">4.5</string>
 </resources>

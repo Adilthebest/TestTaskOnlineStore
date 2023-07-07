@@ -1,7 +1,8 @@
 package com.example.testtaskonlinestore.ui.detail
 
-import android.util.Log
 import android.view.LayoutInflater
+import androidx.navigation.fragment.findNavController
+import coil.load
 import com.example.testtaskonlinestore.databinding.FragmentDetailBinding
 import com.example.testtaskonlinestore.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -14,11 +15,19 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
         return FragmentDetailBinding.inflate(layoutInflater)
     }
 
-    override fun initListener() {
+    override fun initListener()  = with(binding){
         val result= arguments?.getInt("key")
         vm.getProductId(result!!.toInt())
         vm.state.collectState({},{},{
-            Log.e("ololo", "initListener:${it} ", )
+            tvProduct.text = it.title
+            tvDesc.text = it.description
+            tvPrice.text = "$ " + it.price.toString()
+            tvRateDetail.text = it.rating?.rate.toString()
+            tvCategory.text = it.category
+            ivDetails.load(it.image)
         })
+        ivExit.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }

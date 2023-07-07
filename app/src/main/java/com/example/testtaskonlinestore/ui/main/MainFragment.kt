@@ -2,6 +2,7 @@ package com.example.testtaskonlinestore.ui.main
 
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.widget.SearchView
 import android.widget.TextView
 import com.example.testtaskonlinestore.R
 import com.example.testtaskonlinestore.databinding.FragmentMainBinding
@@ -13,13 +14,13 @@ import kotlin.math.roundToInt
 
 class MainFragment : BaseFragment<FragmentMainBinding>() {
 
-    private val vm: MainViewModel by sharedViewModel()
+    private val viewModel: MainViewModel by sharedViewModel()
     private val tabTitles =
         mutableMapOf(
             "Jewelery" to R.drawable.jewelry_icon,
-            "Electronics" to R.drawable.jewelry_icon,
-            "Men's Clothing" to R.drawable.jewelry_icon,
-            "Women's Clothing" to R.drawable.jewelry_icon,
+            "Electronics" to R.drawable.display_1,
+            "Men's Clothing" to R.drawable.baseline_man_24,
+            "Women's Clothing" to R.drawable.woman_logo,
         )
 
     override fun inflate(layoutInflater: LayoutInflater): FragmentMainBinding {
@@ -45,4 +46,15 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
             binding.tabLayout.getTabAt(index)?.customView = title
         }
     }
+
+    override fun initListener() {
+        binding.searchId.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(p0: String?) = viewModel.getAllSearchQuery(p0).run { true }
+        })
+    }
+
+
 }

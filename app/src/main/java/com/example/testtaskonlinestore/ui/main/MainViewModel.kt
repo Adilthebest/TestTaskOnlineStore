@@ -20,16 +20,22 @@ class MainViewModel(val repository: Repository) : BaseViewModel() {
     val _stateWomensClothing = MutableStateFlow<UiState<Products>>(UiState.Empty())
     val stateWomensClothing = _stateWomensClothing.asStateFlow()
 
-    fun getJewelery(sort: String) = repository.getJewelery(sort).collectFlow(_stateJewelery)
+    private val _getAllProductSearch = MutableStateFlow<String?>(null)
+    val getAllProductSearch = _getAllProductSearch.asStateFlow()
 
-    fun getElectronics(sort: String) =
-        repository.getElectronics(sort).collectFlow(_stateElectronics)
+    fun getJewelery() = repository.getJewelery(_getAllProductSearch.value).collectFlow(_stateJewelery)
 
-    fun getMensClothing(sort: String) =
-        repository.getMensClothing(sort).collectFlow(_stateMensClothing)
+    fun getElectronics() =
+        repository.getElectronics(_getAllProductSearch.value).collectFlow(_stateElectronics)
 
-    fun getWomensClothing(sort: String) =
-        repository.getWomensClothing(sort).collectFlow(_stateWomensClothing)
+    fun getMensClothing() =
+        repository.getMensClothing(_getAllProductSearch.value).collectFlow(_stateMensClothing)
 
+    fun getWomensClothing() =
+        repository.getWomensClothing(_getAllProductSearch.value).collectFlow(_stateWomensClothing)
+
+    fun getAllSearchQuery(newQuery: String?) {
+        _getAllProductSearch.value = newQuery
+    }
 }
 
